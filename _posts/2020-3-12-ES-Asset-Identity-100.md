@@ -1,11 +1,11 @@
-**Useful macros
+## Useful macros
 ```
 `assets`
 ```
 ```
 `identities`
 ```
-- Use this macro to list all the users in the identities table 
+- Use this macro to list all the users in the identities table
 
 ```
 get_net_class(1)
@@ -24,8 +24,8 @@ Example:
 
 - This will automatically create a new field called src_ip_class containing the subnet information.   If IP's not found, then the default "unknown" will be returned.   This means the IP address is not in a NYP managed network.
 
-**Lookup tables
-*App: SA-IdentityManagement*
+## Lookup tables
+# App: SA-IdentityManagement
 - asset_lookup_by_str - assets
 - asset_lookup_by_cidr - subnets
 - identity_lookup_expanded - identities
