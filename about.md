@@ -4,12 +4,14 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I am not a replicant.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+The tortoise lays on its back, its belly baking in the hot sun, beating its legs trying to turn itself over, but it can't. Not without your help. But you're not helping.
+
+I am not that tortoise.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[chew@hotmail.com](mailto:chew@hotmail.com)
