@@ -1,4 +1,4 @@
-## Useful macros
+# Useful macros
 ```
 `assets`
 ```
@@ -10,22 +10,22 @@
 ```
 get_net_class(1)
 ```
+**Definition:** lookup classification_lookup cidr as $field1$ output classification as $field1$_class
 
-Definition:  lookup classification_lookup cidr as $field1$ output classification as $field1$_class
-Arguments:   field1
-App:  Splunk_TA_paloalto
-- This is a custom macro created to get the subnet description of each IP address contained in the field provided.  
+**Arguments:**   field1
 
-Example:
+**App:**  Splunk_TA_paloalto
+This is a custom macro created to get the subnet description of each IP address contained in the field provided.  
+
+**Usage:**
 
 ```
 | `get_net_class("src_ip")`
 ```
+This will automatically create a new field called src_ip_class containing the subnet information.   If IP's not found, then the default "unknown" will be returned.   This means the IP address is not in a NYP managed network.
 
-- This will automatically create a new field called src_ip_class containing the subnet information.   If IP's not found, then the default "unknown" will be returned.   This means the IP address is not in a NYP managed network.
-
-## Lookup tables
-# App: SA-IdentityManagement
+# Lookup tables
+**App:** SA-IdentityManagement
 - asset_lookup_by_str - assets
 - asset_lookup_by_cidr - subnets
 - identity_lookup_expanded - identities
