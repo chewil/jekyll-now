@@ -6,6 +6,15 @@ date: 2020-03-15 15:48:00
 category: template test
 tags: template test
 ---
+## Header
+    ---
+    layout: post
+    title: Template File For New Posts
+    published: false
+    date: yyyy-mm-dd hh:mm:ss
+    category: template test
+    tags: template test
+    ---
 
 ## Predefined Global Variables
 
