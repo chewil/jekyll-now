@@ -1,0 +1,18 @@
+---
+layout: post
+title: Template File For New Posts
+published: false
+date: 2020-03-15 15:48:00
+category: template test
+tags: template test
+---
+
+|VARIABLE|DESCRIPTION|
+|---|---|
+|layout|  If set, this specifies the layout file to use. Use the layout file name without the file extension. Layout files must be placed in the _layouts directory.
+|   | 
+|   | - Using null will produce a file without using a layout file. This is overridden if the file is a post/document and has a layout defined in the front matter defaults.
+|   | - Starting from version 3.5.0, using none in a post/document will produce a file without using a layout file regardless of front matter defaults. Using none in a page will cause Jekyll to attempt to use a layout named "none".
+|permalink| If you need your processed blog post URLs to be something other than the site-wide style (default /year/month/day/title.html), then you can set this variable and it will be used as the final URL. |
+|published| Set to false if you don’t want a specific post to show up when the site is generated. 
+
