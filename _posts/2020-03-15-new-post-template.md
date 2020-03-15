@@ -25,7 +25,7 @@ You can also set your own front matter variables you can access in Liquid. For i
 > food: Pizza
 > ---
 > 
-> <h1>{{ page.food }}</h1>
+> <h1>`{{ page.food }}`</h1>
 
 ## Predefined Variables for PostsPermalink
 
