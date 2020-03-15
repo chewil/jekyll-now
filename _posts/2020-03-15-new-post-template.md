@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Template File For New Posts
-published: false
+published: true
 date: 2020-03-15 15:48:00
 category: template test
 tags: template test
