@@ -19,3 +19,4 @@ For example:
 - Assign category of "known_scanner" to our vulnerability scanners so we can easily filter out their activities by a simple `src_category!="known_scanner"`. There is no need to maintain a separate lookup table of known vulnerability scanners.
 - Set notable event priority based on a user's role, so user_category=executive would have a higher priority.
 
+
