@@ -18,3 +18,11 @@ Use case example:
 - Set notable event priority based on a user's role, so `user_category=executive` would have a higher priority notable event created.
 
 ## Assets
+In a nutshell, I consider any networked device on the internal or managed networks as an asset.  
+
+Lookup tables
+App: SA-IdentityManagement
+asset_lookup_by_str - assets
+asset_lookup_by_cidr - subnets
+identity_lookup_expanded - identities
+
