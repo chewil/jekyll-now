@@ -7,22 +7,23 @@ category: Splunk ES
 tags: Splunk ES asset-inventory
 ---
 
-## Background
-In my professional life, I work as a member of the InfoSec SOC team.  In addition to threat hunting, and investigating, I'm also hold an administrator role for our Splunk Enterprise Security.  In other words, I have to make sure, at a low level, all data sources are normalized and conform to CIM, and that the asset and identity data is up to date and be as complete as possible.   
+## Obligatory Disclaimer
+Opinions expressed are solely my own and do not express the views or opinions of my employer or of Splunk...  In addition, the example and use cases provided may not be applicable nor suitable for all environments. 
 
 ## Scope
-The scope of this blog is to focus on how I created and maintained the ES Asset and Identity data for the SOC team.  In my opinion, Asset and Identity is a fundamental step to turn ES into a meaningful and important tool because the additional enrichment information gave us more searching, filtering and data correlating capabilities.  Example of the enriched information are job title, role, system type, subnet, location, etc.
+Splunk Enterprise Security requires that it has access to accurate and up to date asset and identity inforamtion for data enrichment.  Therefore, the scope is to bring out the methods and processes I'm using to maintain asset and identity inforamtion for my ES implementation.
 
-### Use case example:
-- Assign category of "known_scanner" to vulnerability scanners to easily filter out their activities by a simple `src_category!="known_scanner"`. There is no need to maintain a separate lookup table of known vulnerability scanners.
-- Set notable event priority based on a user's role, so `user_category=executive` would have a higher priority notable event created.
+### Use case example
+- Assign category of "known_scanner" to vulnerability scanners to easily filter out their activities by a simple `src_category!="known_scanner"`. With this defined, there is no need to maintain a separate lookup table.
+- Notable events created with higher urgency level based on the priority of the user or asset.  So C2 traffic coming from a PCI or other critical priority assets will have a higher urgency value notable event created than, for example, an unmanaged computer from the guest wifi.
 
-## Assets
-In a nutshell, I consider any networked device on the internal or managed networks as an asset.  
+## ES Lookup Tables
+In ES, asset and identity are just a bunch of lookup tables that are updated via various saved searches.  The following are 3 lookup tables that I commonly reference that are globally shared and located within the context of the `SA-IdentityManagement` app that came bundled with ES.  These 3 lookup tables and others within the same app are automatically updated with various saved searches, and some of those saved searches will be mentioned later.
 
-Lookup tables
-App: SA-IdentityManagement
-asset_lookup_by_str - assets
-asset_lookup_by_cidr - subnets
-identity_lookup_expanded - identities
+- `asset_lookup_by_str` - A list of assets.  This should be a list of all known networking capable hardware.  This include all company owned, vendor deployed and user BYOD devices that could be connected to your managed networks or VPN. 
+	- Note:  This list is kept up to date and completed by merging asset data from multiple sources.  The method used for the merging is custom and I will discuss in more details later.
+- `asset_lookup_by_cidr` - A subset of the `asset_lookup_by_str` lookup table containing only the rows where the `ip` field is in CIDR format that are 31 or less bits. I personally do not find this lookup table very useful, and have made some modifications that I will mention later.
+- `identity_lookup_expanded` - A list of identities, or user accounts from AD.
+
+
 
