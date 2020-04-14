@@ -12,11 +12,13 @@ Opinions expressed are solely my own and do not express the views or opinions of
 
 ## Scope
 Splunk Enterprise Security requires that it has access to accurate and up to date asset and identity inforamtion for data enrichment.  Therefore, the scope is to bring out the methods and processes I'm using to maintain asset and identity inforamtion for my ES implementation.
+Splunk Enterprise Security requires that it has access to accurate and up to date asset and identity inforamtion for data enrichment.  Therefore, the scope is to bring out the methods and processes I'm using to maintain asset and identity inforamtion for my ES implementation.
 
 ### Use case example
 - Assign category of "known_scanner" to vulnerability scanners to easily filter out their activities by a simple `src_category!="known_scanner"`. With this defined, there is no need to maintain a separate lookup table.
 - Notable events created with higher urgency level based on the priority of the user or asset.  So C2 traffic coming from a PCI or other critical priority assets will have a higher urgency value notable event created than, for example, an unmanaged computer from the guest wifi.
 
+<<<<<<< HEAD
 ## Useful Lookup Tables
 ES asset and identity are just a bunch of lookup tables.  There are automatic lookups that uses these lookup tables to enrich the src, dest, dvc and user fields.  There are also many saved searches that updates these lookup tables. The following are 3 lookup tables that I commonly reference that are globally shared and located within the context of the `SA-IdentityManagement` app that came bundled with ES.
 
@@ -27,5 +29,9 @@ ES asset and identity are just a bunch of lookup tables.  There are automatic lo
 
 ## Useful Macros
 tesr
+=======
+## Assets
+Consider any networked device on the internal or managed networks as an asset.  
+>>>>>>> 5c441a73563eb83c742d6ebe92cf2cef670245c2
 
 
