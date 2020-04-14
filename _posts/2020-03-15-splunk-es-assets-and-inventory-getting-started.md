@@ -30,6 +30,8 @@ ES asset and identity are just a bunch of lookup tables.  There are automatic lo
 =======
 ## Assets
 Consider any networked device on the internal or managed networks as an asset.  
->>>>>>> 5c441a73563eb83c742d6ebe92cf2cef670245c2
+
+
+test1
 
 
