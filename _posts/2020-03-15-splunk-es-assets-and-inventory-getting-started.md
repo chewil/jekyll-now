@@ -28,13 +28,17 @@ These enrichment fields comes from the 3 lookup tables in the SA-IdentityManagem
 
 3- `identity_lookup_expanded` - A list of identities, or user accounts from AD.
 
-Try viewing these 3 lookup tables using the `| inputlookup` command to see what information are contained within each.  Splunk has a really good document on this topic on [Splunk Docs](https://docs.splunk.com/Documentation/ES/latest/Admin/Addassetandidentitydata).
+Try viewing these 3 lookup tables using the `| inputlookup` command to see what information are contained within each.  Splunk has a really good document on this topic on Splunk Docs on the topic of ["adding asset and identity data to Splunk ES"](https://docs.splunk.com/Documentation/ES/latest/Admin/Addassetandidentitydata).
 
 In that doc, Splunk listed many data sources to gather asset and identity information from.  Those are great for starting up, however, it’s best to look at all source data collected in Splunk and look for any of them that contains combinations of hostname, FQDN, IP, MAC and user information.  
 
-**Issue:**  TA’s from SplunkBase, even the ones mentioned in the Doc, rarely have all the fields extracted or named correctly.  So expect to spend a LONG time tweaking the field extraction, alias, calculation and transformation rules.  
+**Issue:**  TA’s from SplunkBase, even the ones mentioned in the Doc, rarely have all the fields extracted or named correctly.
 
-**Issue:**  There are saved searches in SA-IdentityManagement that will merge all the asset and identity sources into those 3 lookup tables above.  They do not, however, dedup the information, so only the first entry found will be returned by the lookup.  So the merge script must be modified to properly merge the relevant data and remove duplicates.
+- Expect to spend a LONG time tweaking the field extraction, alias, calculation and transformation rules.  
+
+**Issue:**  There are saved searches in SA-IdentityManagement that will merge all the asset and identity sources into those 3 lookup tables above.  They do not, however, dedup the information, so only the first entry found will be returned by the lookup.  
+
+- Modify ES's merge scripts to properly merge the relevant data and remove duplicates.
 
 ## Save Searches
 
