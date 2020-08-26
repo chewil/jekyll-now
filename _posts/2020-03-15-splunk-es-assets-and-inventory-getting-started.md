@@ -6,14 +6,14 @@ date: 2020-03-15 19:19:00
 category: Splunk ES
 tags: Splunk ES asset-inventory
 ---
-Opinions expressed are solely my own and do not express the views or opinions of my employer or of Splunk...  
-The following are my notes as I was setting up ES’s asset and identity information.  These methods may not be applicable to all environments, so consider them as tip to consider to implement in your environments.
-# ES Assets and Identity
-One of the immediate benefit of having an up-to-date ES asset and identity table is the enrichment fields showing up for the src, dest, doc and user fields.  Example of the additional enrichment fields are:  _category, _ip, _nt_host, _priority, user’s full name, user’s manager, etc.
+*Opinions expressed are solely my own and do not express the views or opinions of my employer, of Splunk, or anyone else...*  
 
-These enrichment fields comes from the 3 lookup tables in the SA-IdentityManagement app.  That app also have 9 automatic lookups defined to output the enriched fields.
+The following are from the various notes I took as I was setting up ES’s asset and identity information at work.  These methods may not be applicable to all environments, so use them as references in your environments.  As of this writing (August, 2020) I am using Splunk Enterprise 7.1.x with ES 5.02.  The newer version of ES handles assets and inventory more efficiently, but, IMO, the methods and process should still be relevant.
 
-## Lookup Tables
+# Benefits of ES Assets and Identity
+An immediate benefit after populating the ES asset and identity tables is the enrichment fields showing up for the `src`, `dest`, `dvc` and `user` fields.  Example of the additional enrichment fields are:  category, ip, hostname, priority, user’s full name, user’s manager, etc.
+
+# Lookup Tables
 
 1- `asset_lookup_by_str` - A list of assets.  This should be a list of all known networking capable hardware.  This include all company owned, vendor deployed and user BYOD devices that could be connected to your managed networks or VPN.
 	- Note:  This list is kept up to date and completed by merging asset data from multiple sources.  The method used for the merging is custom and I will discuss in more details later.
