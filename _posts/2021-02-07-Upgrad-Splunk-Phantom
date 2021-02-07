@@ -7,11 +7,11 @@ category: Splunk ES
 tags: Splunk Phantom admin
 ---
 
-General Instructions
+## General Instructions
 https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
 
 
-1. Full backup of Phantom
+# Step 1 - Full backup of Phantom
 a. https://docs.splunk.com/Documentation/Phantom/4.10.1/Admin/BackupOrRestoreOverview
 b. Run ibackup to create a full backup file
 i. /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full
@@ -23,7 +23,7 @@ With the highest XX values (group number) and it should also be at level 0.
 e. Copy the latest full backup file to /opt/phantom in case a restore is required
 i. cp phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar /opt/phantom
 
-2. Complete prerequisites
+# Step 2 - Complete prerequisites
 a. https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prerequisites_for_upgrading_Splunk_Phantom
 b. Ensure a minimum of 5GB of space available in the /tmp directory on the Splunk Phantom instance
 
@@ -58,9 +58,9 @@ yum update --exclude=nginx
 
 i. If kernel update was applied, then reboot server.
 reboot
-	1) Wait for Phantom services to load.
+1) Wait for Phantom services to load.
 ii. If no kernel was updated, then just restart Phantom services
-	1) /opt/phantom/bin/start_phantom.sh
+1) /opt/phantom/bin/start_phantom.sh
 
 h. Install the Splunk Phantom repositories and signing keys
 i. Switch user to the local phantom account
@@ -74,7 +74,7 @@ cp phantom-<version>.tgz /opt/phantom/
 iv. Extract tar file
 tar -xvzf phantom-<version>.tgz
 
-4. Upgrade Phantom
+# Step 4 - Upgrade Phantom
 a. https://docs.splunk.com/Documentation/Phantom/4.9/Install/UpgradePhantomInstanceUnprivileged
 b. Stop all Phantom services
 i. /opt/phantom/bin/stop_phantom.sh
@@ -111,7 +111,7 @@ ii. DO NOT WALK AWAY OR LEAVE TERMINAL WINDOW UNATTENDED
 iii. PERIODICALLY PRESS ENTER TO ENSURE YOUR SSH SESSION STAYS ALIVE WHILE UPGRADING
 iv. To monitor progress:
 	1) Open a new terminal window.  Log in then switch to the phantom user
-	2) Run following command:
+2) Run following command:
 	tail -f /opt/phantom/var/log/phantom/phantom_install_log
 
 g. If the upgrade script produced the following message:
