@@ -91,14 +91,14 @@ i. You should be able to successfully access any web site using wget and curl
 ii. If not:  
 Switch to ROOT and run the following commands:  
 
-echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile  
-echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile  
-echo "export HTTP_PROXY=http://webproxy.nyp.org:80/" >> /etc/profile  
-echo "export HTTPS_PROXY=http://webproxy.nyp.org:80/" >> /etc/profile  
-echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.sh  
-echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.sh  
-echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.csh  
-echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.csh  
+> echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile  
+> echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile  
+> echo "export HTTP_PROXY=http://webproxy.nyp.org:80/" >> /etc/profile  
+> echo "export HTTPS_PROXY=http://webproxy.nyp.org:80/" >> /etc/profile  
+> echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.sh  
+> echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.sh  
+> echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.csh  
+> echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.csh  
 
 
 iii. Exit root, then switch to phantom user  
