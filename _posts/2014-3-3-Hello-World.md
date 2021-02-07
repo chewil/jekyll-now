@@ -1,6 +1,10 @@
 ---
 layout: post
 title: You're up and running!
+published: false
+date: 2020-03-15 19:19:00
+category: Splunk ES
+tags: Splunk ES asset-inventory
 ---
 
 Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
