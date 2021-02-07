@@ -6,8 +6,7 @@ date: 2021-02-07 16:58:00
 category: Phantom
 tags: Splunk Phantom admin
 ---
-## Header
-Notes on upgrading Splunk Phantom.
+*Notes on upgrading Splunk Phantom.
 
 ## General Instructions
 https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
