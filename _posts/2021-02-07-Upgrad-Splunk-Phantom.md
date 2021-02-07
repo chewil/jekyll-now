@@ -6,6 +6,8 @@ date: 2021-02-07 16:58:00
 category: Phantom
 tags: Splunk Phantom admin
 ---
+## Header
+Notes on upgrading Splunk Phantom.
 
 ## General Instructions
 https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
@@ -127,4 +129,3 @@ h. After upgrading phantom you must run 'phenv python3 /opt/phantom/bin/ibackup.
 i. After the upgrade is complete, from Main Menu > Administration > Administration Settings > Search Settings  
 i. Select Playbooks from the drop-down menu.  
 ii. Then click the Reindex Search Data button.  
-  
