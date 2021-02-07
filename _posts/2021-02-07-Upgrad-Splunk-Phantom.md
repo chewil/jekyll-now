@@ -6,14 +6,13 @@ date: 2021-02-07 16:58:00
 category: Phantom
 tags: Splunk Phantom admin
 ---
-## Header
-Notes on upgrading Splunk Phantom.
+*Notes on upgrading Splunk Phantom.  
 
 ## General Instructions
-https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
+https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview  
 
 
-# Step 1 - Full backup of Phantom
+# Step 1 - Full backup of Phantom  
 a. https://docs.splunk.com/Documentation/Phantom/4.10.1/Admin/BackupOrRestoreOverview  
 b. Run ibackup to create a full backup file  
 i. /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
