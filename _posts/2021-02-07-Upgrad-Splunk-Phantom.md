@@ -8,22 +8,23 @@ tags: Splunk Phantom admin
 ---
 *Notes on upgrading Splunk Phantom as of version 4.10.1.  
 
-## General Instructions
-https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview  
-
+# Phantom Upgrade
+See the [Phantom Upgrade Overview](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview) documents to get started.  
+The following is my summary of the steps required to upgrade an unprivileged (tarball) Phantom server running on RHEL7.  
 
 # Step 1 - Full backup of Phantom  
 1. Reference:  [Phantom Backup/Restore Overview](https://docs.splunk.com/Documentation/Phantom/4.10.1/Admin/BackupOrRestoreOverview)  
 2. Run ibackup to create a full backup file (user: phantom)  
-  `/opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full`  
+     `/opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full`  
 
 3. Copy the latest full backup file to /opt/phantom in case a restore is required: (user: phantom)  
- `cd /opt/phantom/data/backup`  
- `cp phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar /opt/phantom`  
- - Where **XX** is the highest group number at level **0**.
+    `cd /opt/phantom/data/backup`  
+    `cp phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar /opt/phantom`  
+    - Where **XX** is the highest group number at level **0**.
 
 # Step 2 - Complete prerequisites
 1. Reference:  [Phantom Install](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prerequisites_for_upgrading_Splunk_Phantom)  
+
 2. Ensure a minimum of 5GB of space available in the /tmp directory on the Splunk Phantom instance  
 
 3. Reference:  [Prepare your Splunk Phantom deployment for upgrade](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prepare_your_Splunk_Phantom_deployment_for_upgrade)  
@@ -53,25 +54,29 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
     `exit`  
     `sudo su - phantom`  
     `/opt/phantom/bin/start_phantom.sh`  
+    
 9. Download the Official Unprivileged Tarball file for your operating system from the Splunk Phantom community website Product Downloads page.  
-  **Issue**: [my.phantom.us](https://my.phantom.us) only have the latest version of Phantom to download.  If you need older versions in order to do the step/incremental upgrades, open a suppose case to request for the file(s) before proceeding to the next step.
+
+     * **Issue 1**: [my.phantom.us](https://my.phantom.us) only have the latest version of Phantom to download.  If you need older versions in order to do the step/incremental upgrades, open a suppose case to request for the file(s) before proceeding to the next step.  
+     * **Issue 2**: As of Feb 8, 2021, I have not gone past this step because I need a copy of an older release to complete the step upgrades to get to the latest version. I am currently having issues with my Splunk contract, so I cannot create new support cases. :(
+     * The **lesson learned** is to download every new Phantom release, even if I do not plan to upgrade because that new release may be the require version once I’m ready to upgrade to the latest version.  
 
 10. Install the Splunk Phantom repositories and signing keys: (user: phantom)  
- `sudo su - phantom`  
- `cp phantom-<version>.tgz /opt/phantom/`  
- `tar -xvzf phantom-<version>.tgz`  
+    `sudo su - phantom`  
+    `cp phantom-<version>.tgz /opt/phantom/`  
+    `tar -xvzf phantom-<version>.tgz`  
 
 # Step 4 - Upgrade Phantom  
 1. Reference: [Upgrade Unprivileged/tarball Phantom Instance](https://docs.splunk.com/Documentation/Phantom/4.9/Install/UpgradePhantomInstanceUnprivileged)  
 
 2. Stop all Phantom services (user: phantom)  
- `/opt/phantom/bin/stop_phantom.sh`  
+    `/opt/phantom/bin/stop_phantom.sh`  
 
 3. Disable WAL archiving for the PostgreSQL database (user: phantom)  
- `sed -i -e 's/archive_mode = on/archive_mode = off/i' /opt/phantom/data/db/postgresql.phantom.conf`  
+    `sed -i -e 's/archive_mode = on/archive_mode = off/i' /opt/phantom/data/db/postgresql.phantom.conf`  
 
 4. Start Phantom services (user: phantom)  
- `/opt/phantom/bin/start_phantom.sh`  
+    `/opt/phantom/bin/start_phantom.sh`  
 
 5. Verify proxy server configuration for the phantom user. (user: root)
  * You must be able to successfully access any web site using wget and curl  
