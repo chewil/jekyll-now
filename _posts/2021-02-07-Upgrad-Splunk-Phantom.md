@@ -58,13 +58,16 @@ The following is my summary of the steps required to upgrade an unprivileged (ta
 9. Download the Official Unprivileged Tarball file for your operating system from the Splunk Phantom community website Product Downloads page.  
 
      * **Issue 1**: [my.phantom.us](https://my.phantom.us) only have the latest version of Phantom to download.  If you need older versions in order to do the step/incremental upgrades, open a suppose case to request for the file(s) before proceeding to the next step.  
-     * **Issue 2**: As of Feb 8, 2021, I have not gone past this step because I need a copy of an older release to complete the step upgrades to get to the latest version. I am currently having issues with my Splunk contract, so I cannot create new support cases. :(
-     * The **lesson learned** is to download every new Phantom release, even if I do not plan to upgrade because that new release may be the require version once I’m ready to upgrade to the latest version.  
+     * **Issue 2**: As of Feb 8, 2021, I have not gone past this step because I need a copy of an older release to complete the step upgrades to get to the latest version. I am currently having issues with my Splunk contract, so I cannot create new support cases. :(  
+     * The **lesson learned** is to download every new Phantom release, even if I do not plan to upgrade because that new release may be the require version once I’m ready to upgrade to the latest version.
+
 
 10. Install the Splunk Phantom repositories and signing keys: (user: phantom)  
+    
     `sudo su - phantom`  
     `cp phantom-<version>.tgz /opt/phantom/`  
     `tar -xvzf phantom-<version>.tgz`  
+
 
 # Step 4 - Upgrade Phantom  
 1. Reference: [Upgrade Unprivileged/tarball Phantom Instance](https://docs.splunk.com/Documentation/Phantom/4.9/Install/UpgradePhantomInstanceUnprivileged)  
