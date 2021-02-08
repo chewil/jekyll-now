@@ -28,10 +28,9 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
 
 3. Reference:  [Prepare your Splunk Phantom deployment for upgrade](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prepare_your_Splunk_Phantom_deployment_for_upgrade)  
 
-4. SU to the local phantom user and disable the iBackup cron jobs. (user: phantom)
-
+4. SU to the local phantom user and disable the iBackup cron jobs. (user: phantom)  
  `sudo su - phantom`  
- `crontab -e`
+ `crontab -e`  
 
  Look for the following 2 jobs:
  > 27 1 * * 0 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
