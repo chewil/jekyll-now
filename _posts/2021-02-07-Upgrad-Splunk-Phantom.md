@@ -47,14 +47,13 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
  `yum clean all`  
 
 8. Update the installed software packages, excluding Nginx, and apply operating system patches. As the root user: (user: root)  
-
  `yum update --exclude=nginx`  
 
  * If kernel update was applied, reboot server then wait  for Phantom services to load.  
  * If no kernel was updated, then SU back to the phantom user then restart Phantom services: (user: phantom)  
   `exit`  
 	`sudo su - phantom`  
-  `/opt/phantom/bin/start_phantom.sh`  
+  `/opt/phantom/bin/start_phantom.sh`
 
 
 9. Download the Official Unprivileged Tarball file for your operating system from the Splunk Phantom community website Product Downloads page.  
