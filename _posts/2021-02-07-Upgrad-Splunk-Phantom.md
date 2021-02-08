@@ -13,15 +13,15 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
 
 
 # Step 1 - Full backup of Phantom  
-a. https://docs.splunk.com/Documentation/Phantom/4.10.1/Admin/BackupOrRestoreOverview  
-b. Run ibackup to create a full backup file  
-  i. /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
-c. cd /opt/phantom/data/backup  
-d. Relocate the latest full backup file created:  
- i. cd /opt/phantom/data/backup  
- ii. Find file:  phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar With the highest XX values (group number) and it should also be at level 0.  
-e. Copy the latest full backup file to /opt/phantom in case a restore is required  
- i. cp phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar /opt/phantom  
+1. https://docs.splunk.com/Documentation/Phantom/4.10.1/Admin/BackupOrRestoreOverview  
+2. Run ibackup to create a full backup file  
+  * /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
+3. cd /opt/phantom/data/backup  
+4. Relocate the latest full backup file created:  
+ * cd /opt/phantom/data/backup  
+ * Find file:  phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar With the highest XX values (group number) and it should also be at level 0.  
+5. Copy the latest full backup file to /opt/phantom in case a restore is required  
+ * cp phantom_backup_group_XX_level_0-mm_dd_YYYY-HHh_MMm_sss.tar /opt/phantom  
 
 # Step 2 - Complete prerequisites
 a. https://docs.splunk.com/Documentation/Phantom/4.10.1/Install  /UpgradeOverview#Prerequisites_for_upgrading_Splunk_Phantom  
