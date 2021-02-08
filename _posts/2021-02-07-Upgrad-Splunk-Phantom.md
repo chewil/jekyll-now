@@ -32,11 +32,9 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
  `sudo su - phantom`  
  `crontab -e`  
 
- Look for the following 2 jobs:
+ Look for the following 2 jobs then comment out both lines with # at the beginning of the line, then save file to update cron:
  > 27 1 * * 0 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
  > 27 1 * * 1-6 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type incr  
-
- Comment out both lines with # at the beginning of the line, then save file to update cron.  
 
 5. Stop all Phantom services (user: phantom)  
  `/opt/phantom/bin/stop_phantom.sh`  
