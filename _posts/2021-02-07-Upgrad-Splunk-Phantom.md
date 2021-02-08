@@ -38,13 +38,14 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
 
 5. Stop all Phantom services (user: phantom)  
     `/opt/phantom/bin/stop_phantom.sh`  
-
+  
 6. SU to root  
     `exit`  
     `sudo su -`  
 
 7. Clear the YUM caches (user: root)  
     `yum clean all`  
+    
 8. Update the installed software packages, excluding Nginx, and apply operating system patches. As the root user: (user: root)  
     `yum update --exclude=nginx`  
     * If kernel update was applied, reboot server then wait  for Phantom services to load.  
@@ -76,42 +77,42 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
  * You must be able to successfully access any web site using wget and curl  
  * If not then switch to ROOT and verify that the required `export` commands are in place.  Otherwise, run the appropriate command(s) as follows:  
 
- > echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile  
- > echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile  
- > echo "export HTTP_PROXY=http://webproxy.nyp.org:80/" >> /etc/profile  
- > echo "export HTTPS_PROXY=http://webproxy.nyp.org:80/" >> /etc/profile  
- > echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.sh  
- > echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.sh  
- > echo "export http_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.csh  
- > echo "export https_proxy=http://webproxy.nyp.org:80/" >> /etc/profile.d/http_proxy.csh  
+    > echo "export http_proxy=http://proxy.example.com:8080/" >> /etc/profile  
+    > echo "export https_proxy=http://proxy.example.com:8080/" >> /etc/profile  
+    > echo "export HTTP_PROXY=http://proxy.example.com:8080/" >> /etc/profile  
+    > echo "export HTTPS_PROXY=http://proxy.example.com:8080/" >> /etc/profile  
+    > echo "export http_proxy=http://proxy.example.com:8080/" >> /etc/profile.d/http_proxy.sh  
+    > echo "export https_proxy=http://proxy.example.com:8080/" >> /etc/profile.d/http_proxy.sh  
+    > echo "export http_proxy=http://proxy.example.com:8080/" >> /etc/profile.d/http_proxy.csh  
+    > echo "export https_proxy=http://proxy.example.com:8080/" >> /etc/profile.d/http_proxy.csh  
 
 6. Exit root, then switch to phantom user  
- `exit`  
- `sudo su - phantom`  
+    `exit`  
+    `sudo su - phantom`  
 
 7. Run the upgrade script  
- `/opt/phantom/bin/phenv /opt/phantom/phantom_tar_install.sh upgrade --without-apps`  
+    `/opt/phantom/bin/phenv /opt/phantom/phantom_tar_install.sh upgrade --without-apps`  
 
- * Upgrade takes a **LONG TIME**  
- * **DO NOT WALK AWAY OR LEAVE TERMINAL WINDOW UNATTENDED**  
- * **PERIODICALLY PRESS ENTER TO ENSURE YOUR SSH SESSION STAYS ALIVE WHILE UPGRADING**  
- * To monitor progress:  
-  Open a new terminal window.  Log in then switch to the phantom user  
-  Run following command:  
-	 `tail -f /opt/phantom/var/log/phantom/phantom_install_log`  
+    * Upgrade takes a **LONG TIME**  
+    * **DO NOT WALK AWAY OR LEAVE TERMINAL WINDOW UNATTENDED**  
+    * **PERIODICALLY PRESS ENTER TO ENSURE YOUR SSH SESSION STAYS ALIVE WHILE UPGRADING**  
+    * To monitor progress:  
+     Open a new terminal window.  Log in then switch to the phantom user  
+     Run following command:  
+	    `tail -f /opt/phantom/var/log/phantom/phantom_install_log`  
 
 
 8. If the upgrade script produced the following message:  
 
- > To improve database performance, after completing the upgrade, run: /<PHANTOM_HOME>/bin/phenv /<PHANTOM_HOME>/usr/postgresql/bin/vacuumdb -h /tmp --all --analyze-in-stages  
+    > To improve database performance, after completing the upgrade, run: /<PHANTOM_HOME>/bin/phenv /<PHANTOM_HOME>/usr/postgresql/bin/vacuumdb -h /tmp --all --analyze-in-stages  
 
-  Then run the command:  
+     Then run the command:  
 
- `/opt/phantom/bin/phenv /opt/phantom/usr/postgresql/bin/vacuumdb -h /tmp --all --analyze-in-stages`  
+    `/opt/phantom/bin/phenv /opt/phantom/usr/postgresql/bin/vacuumdb -h /tmp --all --analyze-in-stages`  
 
 
 9. After upgrading phantom you must run `phenv python3 /opt/phantom/bin/ibackup.pyc --setup` to continue using backup and restore functionality. Your current backups will be archived in the /opt/phantom/data directory.  
 
 10. After the upgrade is complete, from **Main Menu** > **Administration** > **Administration Settings** > **Search Settings**  
- a. Select Playbooks from the drop-down menu.  
- b. Then click the **Reindex Search Data** button.  
+    a. Select Playbooks from the drop-down menu.  
+    b. Then click the **Reindex Search Data** button.  
