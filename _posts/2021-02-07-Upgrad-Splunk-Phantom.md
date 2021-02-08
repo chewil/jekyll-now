@@ -6,7 +6,7 @@ date: 2021-02-07 16:58:00
 category: Phantom
 tags: Splunk Phantom admin
 ---
-*Notes on upgrading Splunk Phantom as of version 4.10.1.  
+*Personal notes on upgrading Splunk Phantom.
 
 # Phantom Upgrade
 See the [Phantom Upgrade Overview](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview) documents to get started.  
