@@ -29,29 +29,29 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview
 3. Reference:  [Prepare your Splunk Phantom deployment for upgrade](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prepare_your_Splunk_Phantom_deployment_for_upgrade)  
 
 4. SU to the local phantom user and disable the iBackup cron jobs. (user: phantom)  
- `sudo su - phantom`  
- `crontab -e`  
+    `sudo su - phantom`  
+    `crontab -e`  
 
- Look for the following 2 jobs then comment out both lines with # at the beginning of the line, then save file to update cron:
- > 27 1 * * 0 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
- > 27 1 * * 1-6 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type incr  
+    Look for the following 2 jobs then comment out both lines with # at the beginning of the line, then save file to update cron:
+    > 27 1 * * 0 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
+    > 27 1 * * 1-6 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type incr  
 
 5. Stop all Phantom services (user: phantom)  
- `/opt/phantom/bin/stop_phantom.sh`  
+    `/opt/phantom/bin/stop_phantom.sh`  
 
 6. SU to root  
- `exit`  
- `sudo su -`  
+    `exit`  
+    `sudo su -`  
 
 7. Clear the YUM caches (user: root)  
- `yum clean all`  
+    `yum clean all`  
 8. Update the installed software packages, excluding Nginx, and apply operating system patches. As the root user: (user: root)  
- `yum update --exclude=nginx`  
- * If kernel update was applied, reboot server then wait  for Phantom services to load.  
- * If no kernel was updated, then SU back to the phantom user then restart Phantom services: (user: phantom)  
-  `exit`  
-	`sudo su - phantom`  
-  `/opt/phantom/bin/start_phantom.sh`  
+    `yum update --exclude=nginx`  
+    * If kernel update was applied, reboot server then wait  for Phantom services to load.  
+    * If no kernel was updated, then SU back to the phantom user then restart Phantom services: (user: phantom)  
+    `exit`  
+    `sudo su - phantom`  
+    `/opt/phantom/bin/start_phantom.sh`  
 9. Download the Official Unprivileged Tarball file for your operating system from the Splunk Phantom community website Product Downloads page.  
   **Issue**: [my.phantom.us](https://my.phantom.us) only have the latest version of Phantom to download.  If you need older versions in order to do the step/incremental upgrades, open a suppose case to request for the file(s) before proceeding to the next step.
 
