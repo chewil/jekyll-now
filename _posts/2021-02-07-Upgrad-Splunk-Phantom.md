@@ -6,7 +6,7 @@ date: 2021-02-07 16:58:00
 category: Phantom
 tags: Splunk Phantom admin
 ---
-*Personal notes on upgrading Splunk Phantom.
+*Personal notes on upgrading an **unprivileged** Splunk Phantom instance using the tarball (.tgz) installer method.  
 
 # Phantom Upgrade
 See the [Phantom Upgrade Overview](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview) documents to get started.  
@@ -28,9 +28,12 @@ The following is my summary of the steps required to upgrade an unprivileged (ta
 
 2. Ensure a minimum of 5GB of space available in the /tmp directory on the Splunk Phantom instance  
 
-3. Reference:  [Prepare your Splunk Phantom deployment for upgrade](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prepare_your_Splunk_Phantom_deployment_for_upgrade)  
+    This is the only prerequisite step for an unprivileged tarball install.
+ 
+# Step 3 - Prepare for Upgrade
+1. Reference:  [Prepare your Splunk Phantom deployment for upgrade](https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/UpgradeOverview#Prepare_your_Splunk_Phantom_deployment_for_upgrade)  
 
-4. SU to the local phantom user and disable the iBackup cron jobs. (user: phantom)  
+2. SU to the local phantom user and disable the iBackup cron jobs. (user: phantom)  
     `sudo su - phantom`  
     `crontab -e`  
     
@@ -38,17 +41,17 @@ The following is my summary of the steps required to upgrade an unprivileged (ta
     > 27 1 * * 0 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type full  
     > 27 1 * * 1-6 /opt/phantom/bin/phenv python /opt/phantom/bin/ibackup.pyc --backup --backup-type incr  
 
-5. Stop all Phantom services (user: phantom)  
+3. Stop all Phantom services (user: phantom)  
     `/opt/phantom/bin/stop_phantom.sh`  
 
-6. SU to root  
+4. SU to root  
     `exit`  
     `sudo su -`  
 
-7. Clear the YUM caches (user: root)  
+5. Clear the YUM caches (user: root)  
     `yum clean all`  
 
-8. Update the installed software packages, excluding Nginx, and apply operating system patches. As the root user: (user: root)  
+6. Update the installed software packages, excluding Nginx, and apply operating system patches. As the root user: (user: root)  
     `yum update --exclude=nginx`  
     * If kernel update was applied, reboot server then wait  for Phantom services to load.  
     * If no kernel was updated, then SU back to the phantom user then restart Phantom services: (user: phantom)  
@@ -56,16 +59,17 @@ The following is my summary of the steps required to upgrade an unprivileged (ta
     `sudo su - phantom`  
     `/opt/phantom/bin/start_phantom.sh`  
 
-9. Download the Official Unprivileged Tarball file for your operating system from the Splunk Phantom community website Product Downloads page.  
+7. Download the Official Unprivileged Tarball file for your operating system from the Splunk Phantom community website Product Downloads page.  
 
-     * **Issue 1**: [my.phantom.us](https://my.phantom.us) only have the latest version of Phantom to download.  If you need older versions in order to do the step/incremental upgrades, open a suppose case to request for the file(s) before proceeding to the next step.  
+     * **Issue**: [my.phantom.us](https://my.phantom.us) only have the latest version of Phantom to download.  If you need older versions in order to do the step/incremental upgrades, open a suppose case to request for the file(s) before proceeding to the next step.  
     
-     * **Lesson Learned**: Use the download link (hxxps://download.splunk.com/...) from support as reference for future.  Use the file path’s naming convention to deduce link for all future version.
+     * **Lesson Learned**: Use the download link (hxxps://download.splunk.com/...) from support as reference for future.  Use the file path’s naming convention to deduce the download link for all future versions.
 
-10. Install the Splunk Phantom repositories and signing keys: (user: phantom)  
+8. Install the Splunk Phantom repositories and signing keys: (user: phantom)  
     
     `sudo su - phantom`  
-    `cp phantom-<version>.tgz /opt/phantom/`  
+    `cp /home/phantom/phantom-<version>.tgz /opt/phantom/`  
+    `cd /opt/phantom`
     `tar -xvzf phantom-<version>.tgz`  
 
 
@@ -120,7 +124,7 @@ The following is my summary of the steps required to upgrade an unprivileged (ta
     `/opt/phantom/bin/phenv /opt/phantom/usr/postgresql/bin/vacuumdb -h /tmp --all --analyze-in-stages`  
 
 
-9. After upgrading phantom you must run `phenv python3 /opt/phantom/bin/ibackup.pyc --setup` to continue using backup and restore functionality. Your current backups will be archived in the /opt/phantom/data directory.  
+9. After upgrading phantom you must run `/opt/phantom/bin/phenv python3 /opt/phantom/bin/ibackup.pyc --setup` to continue using backup and restore functionality. Your current backups will be archived in the /opt/phantom/data directory.  
 
 10. After the upgrade is complete, from **Main Menu** > **Administration** > **Administration Settings** > **Search Settings**  
     a. Select Playbooks from the drop-down menu.  
