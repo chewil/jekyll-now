@@ -13,6 +13,11 @@ tags: Splunk Phantom admin
 https://docs.splunk.com/Documentation/Phantom/4.9/Install/InstallUnprivileged
 
 1- Enable proxy  
+    > echo "export http_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export https_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export HTTP_PROXY=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export HTTPS_PROXY=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export http_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile.d/http_proxy.sh  
     > echo “export http_proxy=http://proxy.example.com:8080/“ &gt; /etc/profile.d/http_proxy.sh
     > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.sh
     > echo “export http_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
