@@ -1,24 +1,24 @@
-—
+---
 layout: post
 title: Install Splunk Phantom
 published: true
 date: 2021-02-13 23:49:00
 category: Phantom
 tags: Splunk Phantom admin
-—
+---
 
 ## WIP
 *Personal notes on upgrading an **unprivileged** Splunk Phantom instance using the tarball (.tgz) installer method.  
 
 https://docs.splunk.com/Documentation/Phantom/4.9/Install/InstallUnprivileged
 
-1- Enable proxy
-echo “export http_proxy=http://webproxy.nyp.org:80/“ > /etc/profile.d/http_proxy.sh
-echo “export https_proxy=http://webproxy.nyp.org:80/“ >> /etc/profile.d/http_proxy.sh
-echo “export http_proxy=http://webproxy.nyp.org:80/“ > /etc/profile.d/http_proxy.csh
-echo “export https_proxy=http://webproxy.nyp.org:80/“ >> /etc/profile.d/http_proxy.csh
+1- Enable proxy  
+    > echo “export http_proxy=http://proxy.example.com:8080/“ &gt; /etc/profile.d/http_proxy.sh
+    > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.sh
+    > echo “export http_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
+    > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
 
-2- Disable SELinux
+2- Disable SELinux  
 Edit /etc/selinux/config to disable SELinux. Change the SELINUX= entry to:
 SELINUX=disabled
 
@@ -30,7 +30,7 @@ shutdown -r now
 4- Install dependencies
 yum install -y libevent libicu c-ares bind-utils java-1.8.0-openjdk-headless mailcap fontconfig ntpdate perl rsync xmlsec1 xmlsec1-openssl libxslt ntp zip net-tools policycoreutils-python libxml2 libcurl gnutls
 
-5- DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS) 
+5- DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)
 
 6- Set firewall rule to allow Phantom ports
 Standalone:
@@ -116,5 +116,3 @@ whoami
 For more installation command line options, see phantom_tar_install.sh options.
 
 Optional: During install, open a second terminal, SSH in then switch to the phantom user.   Tail -f the file /opt/phantom/var/log/phantom/phantom_install_log to see the installation progress.
-
-
