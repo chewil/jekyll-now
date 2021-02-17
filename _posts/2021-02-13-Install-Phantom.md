@@ -39,56 +39,53 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 5. DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)  
 
-6. Set firewall rule to allow Phantom ports  
+6. Set firewall rule to allow Phantom ports
+
     Standalone  
-    > firewall-cmd —add-port=22/tcp —permanent  
-    > firewall-cmd —add-port=80/tcp —permanent  
-    > firewall-cmd —add-port=443/tcp —permanent  
-    > firewall-cmd —add-port=8000/tcp —permanent  
+    `firewall-cmd —add-port=22/tcp —permanent`  
+    `firewall-cmd —add-port=80/tcp —permanent`  
+    `firewall-cmd —add-port=443/tcp —permanent`  
+    `firewall-cmd —add-port=8000/tcp —permanent`  
 
     PostgreSQL  
-	> firewall-cmd —add-port=5432/tcp —permanent  
-    > firewall-cmd —add-port=6432/tcp —permanent  
+	`firewall-cmd —add-port=5432/tcp —permanent`  
+    `firewall-cmd —add-port=6432/tcp —permanent`  
 
     Embedded Splunk Enterprise  
-    > firewall-cmd —add-port=5121/tcp —permanent  
-    > firewall-cmd —add-port=5122/tcp —permanent  
+    `firewall-cmd —add-port=5121/tcp —permanent`  
+    `firewall-cmd —add-port=5122/tcp —permanent`  
 
     Cluster Node  
-    > firewall-cmd —add-port=4369/tcp —permanent  
-    > firewall-cmd —add-port=5671/tcp —permanent  
-    > firewall-cmd —add-port=8300/tcp —permanent  
-    > firewall-cmd —add-port=8301/tcp —permanent  
-    > firewall-cmd —add-port=8302/tcp —permanent  
-    > firewall-cmd —add-port=8888/tcp —permanent  
-    > firewall-cmd —add-port=15672/tcp —permanent  
-    > firewall-cmd —add-port=25672/tcp —permanent  
-    > firewall-cmd —add-port=27100-27200/tcp —permanent  
+    `firewall-cmd —add-port=4369/tcp —permanent`  
+    `firewall-cmd —add-port=5671/tcp —permanent`  
+    `firewall-cmd —add-port=8300/tcp —permanent`  
+    `firewall-cmd —add-port=8301/tcp —permanent`  
+    `firewall-cmd —add-port=8302/tcp —permanent`  
+    `firewall-cmd —add-port=8888/tcp —permanent`  
+    `firewall-cmd —add-port=15672/tcp —permanent`  
+    `firewall-cmd —add-port=25672/tcp —permanent`  
+    `firewall-cmd —add-port=27100-27200/tcp —permanent`  
     
     Save and reload FW Policy  
-    > firewall-cmd —reload  
-    > firewall-cmd —list-all  
+    `firewall-cmd —reload`  
+    `firewall-cmd —list-all`  
 
 7. NTP (already enabled)
 
-8. Create a file called /etc/sysctl.d/50-phantom.conf  
-
-    See step 11 of the unprivileged install doc to paste in the necessary configuration  
+8. Create a file called /etc/sysctl.d/50-phantom.conf.  See step 11 of the unprivileged install doc to paste in the necessary configuration  
 
 9. Apply the new kernel settings  
 
-    > sysctl —system  
+    `sysctl —system`  
 
 10. Create the user account that will be used to run Splunk Phantom.
 
-    > adduser -c “Phantom User” phantom  
-    > passwd phantom  
-    Generate a random password, or use a password manager  
+    `adduser -c “Phantom User” phantom`  
+    `passwd phantom`
 
-11. Create a file called /etc/security/limits.d/25-phantom-limits.conf
+11. Create a file called /etc/security/limits.d/25-phantom-limits.conf.  This file sets resource limits for the user that will run Splunk Phantom.
 
-    This file sets resource limits for the user that will run Splunk Phantom.  
-    `touch /etc/security/limits.d/25-phantom-limits.conf`  
+    `touch /etc/security/limits.d/25-phantom-limits.conf`
 
 12. Edit the file /etc/security/limits.d/25-phantom-limits.conf to add these settings:
 
