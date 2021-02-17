@@ -40,33 +40,33 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 6. Set firewall rule to allow Phantom ports  
     Standalone  
-    > firewall-cmd —add-port=22/tcp —permanent
-    > firewall-cmd —add-port=80/tcp —permanent
-    > firewall-cmd —add-port=443/tcp —permanent
-    > firewall-cmd —add-port=8000/tcp —permanent
+    > firewall-cmd —add-port=22/tcp —permanent  
+    > firewall-cmd —add-port=80/tcp —permanent  
+    > firewall-cmd —add-port=443/tcp —permanent  
+    > firewall-cmd —add-port=8000/tcp —permanent  
 
     PostgreSQL  
-	> firewall-cmd —add-port=5432/tcp —permanent
-    > firewall-cmd —add-port=6432/tcp —permanent
+	> firewall-cmd —add-port=5432/tcp —permanent  
+    > firewall-cmd —add-port=6432/tcp —permanent  
 
     Embedded Splunk Enterprise  
-    > firewall-cmd —add-port=5121/tcp —permanent
-    > firewall-cmd —add-port=5122/tcp —permanent
+    > firewall-cmd —add-port=5121/tcp —permanent  
+    > firewall-cmd —add-port=5122/tcp —permanent  
 
     Cluster Node  
-    > firewall-cmd —add-port=4369/tcp —permanent
-    > firewall-cmd —add-port=5671/tcp —permanent
-    > firewall-cmd —add-port=8300/tcp —permanent
-    > firewall-cmd —add-port=8301/tcp —permanent
-    > firewall-cmd —add-port=8302/tcp —permanent
-    > firewall-cmd —add-port=8888/tcp —permanent
-    > firewall-cmd —add-port=15672/tcp —permanent
-    > firewall-cmd —add-port=25672/tcp —permanent
-    > firewall-cmd —add-port=27100-27200/tcp —permanent
+    > firewall-cmd —add-port=4369/tcp —permanent  
+    > firewall-cmd —add-port=5671/tcp —permanent  
+    > firewall-cmd —add-port=8300/tcp —permanent  
+    > firewall-cmd —add-port=8301/tcp —permanent  
+    > firewall-cmd —add-port=8302/tcp —permanent  
+    > firewall-cmd —add-port=8888/tcp —permanent  
+    > firewall-cmd —add-port=15672/tcp —permanent  
+    > firewall-cmd —add-port=25672/tcp —permanent  
+    > firewall-cmd —add-port=27100-27200/tcp —permanent  
     
     Save and reload FW Policy  
-    > firewall-cmd —reload
-    > firewall-cmd —list-all
+    > firewall-cmd —reload  
+    > firewall-cmd —list-all  
 
 7. NTP (already enabled)
 
