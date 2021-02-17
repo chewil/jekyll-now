@@ -10,17 +10,24 @@ tags: Splunk Phantom admin
 ## WIP
 *Personal notes on upgrading an **unprivileged** Splunk Phantom instance using the tarball (.tgz) installer method.  
 
-https://docs.splunk.com/Documentation/Phantom/4.9/Install/InstallUnprivileged
+https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/InstallUnprivileged  
+
+Version 4.10.1 of the Install guide was updated and feels more streamlined.  Just follow those steps accordingly and use the following notes as reference.  
 
 1- Enable proxy
-echo “export http_proxy=http://webproxy.nyp.org:80/“ > /etc/profile.d/http_proxy.sh
-echo “export https_proxy=http://webproxy.nyp.org:80/“ >> /etc/profile.d/http_proxy.sh
-echo “export http_proxy=http://webproxy.nyp.org:80/“ > /etc/profile.d/http_proxy.csh
-echo “export https_proxy=http://webproxy.nyp.org:80/“ >> /etc/profile.d/http_proxy.csh
+
+    > echo "export http_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export https_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export HTTP_PROXY=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo "export HTTPS_PROXY=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
+    > echo “export http_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.sh
+    > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.sh
+    > echo “export http_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
+    > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
 
 2- Disable SELinux
-Edit /etc/selinux/config to disable SELinux. Change the SELINUX= entry to:
-SELINUX=disabled
+    Edit /etc/selinux/config to disable SELinux. Change the SELINUX= entry to:
+    `SELINUX=disabled`
 
 3- Yum update then reboot
 yum clean all
