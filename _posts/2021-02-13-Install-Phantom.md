@@ -76,55 +76,67 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 7- NTP (already enabled)
 
 8- Create a file called /etc/sysctl.d/50-phantom.conf
-See step 11 of the unprivileged install doc to paste in the necessary configuration
+
+    See step 11 of the unprivileged install doc to paste in the necessary configuration
 
 9- Apply the new kernel settings.
-sysctl —system
+
+    `sysctl —system`
 
 10- Create the user account that will be used to run Splunk Phantom.
-adduser -c “Phantom User” phantom
-passwd phantom
-- (Generate a random password.  We will use Cyberark later to manage this password, so there’s no need to remember it)
+
+    `adduser -c “Phantom User” phantom`
+    `passwd phantom`
+    Generate a random password, or use a password manager
 
 11- Create a file called /etc/security/limits.d/25-phantom-limits.conf
-- This file sets resource limits for the user that will run Splunk Phantom.
-touch /etc/security/limits.d/25-phantom-limits.conf
+
+    This file sets resource limits for the user that will run Splunk Phantom.
+    `touch /etc/security/limits.d/25-phantom-limits.conf`
 
 12- Edit the file /etc/security/limits.d/25-phantom-limits.conf to add these settings:
-phantom          hard    nofile          64000
-phantom          soft    nofile          64000
-phantom          hard    nproc           64000
-phantom          soft    nproc           64000           
+
+    > phantom          hard    nofile          64000
+    > phantom          soft    nofile          64000
+    > phantom          hard    nproc           64000
+    > phantom          soft    nproc           64000           
 
 13- Apply the new security settings.
-sysctl —system
+
+    `sysctl —system`
 
 14- Set /opt/phantom permission
-chown phantom:phantom /opt/phantom
-chmod 775 /opt/phantom
+
+    `chown phantom:phantom /opt/phantom`
+    `chmod 775 /opt/phantom`
 
 
 Following steps must be done as the phantom user
-	- Confirm that you have plenty of hours remaining in your Cisco VPN session.
-	- If in doubt, switch to mercury to not get interrupted in the middle of the install
+    - Confirm that you have plenty of hours remaining in your Cisco VPN session.
+    - If in doubt, switch to mercury to not get interrupted in the middle of the install
 
 15- Exit the root user
-exit
+
+    `exit`
 
 16- Use sudo to switch to the phantom user
-sudo su - phantom
+
+    `sudo su - phantom`
 
 17- Copy or upload then uncompress phantom-4.9.34514-1.tgz to /opt/phantom
-cd /opt/phantom
-tar xvzf phantom-4.9.34514-1.tgz
-(NOTE:  tar will overwrite permission of “.” to be 0750.  Leave it as is.  No change)
+
+    `cd /opt/phantom`
+    `tar xvzf phantom-x.x.yyyyy.tgz`
+    (*NOTE:*  tar will overwrite permission of “.” to be 0750.  Leave it as is.  No change)
 
 18- Install
-whoami
-(run whoami to be sure you are using the “phantom” user)
-./phantom_tar_install.sh install —https-port=8000
-	- Install and configure Phantom with the WebUI on port 8000
+
+    run whoami to be sure you are using the “phantom” user
+    `whoami`
+
+    Install and configure Phantom with the WebUI on port 8000
+    `./phantom_tar_install.sh install —https-port=8000`
 
 For more installation command line options, see phantom_tar_install.sh options.
 
-Optional: During install, open a second terminal, SSH in then switch to the phantom user.   Tail -f the file /opt/phantom/var/log/phantom/phantom_install_log to see the installation progress.
+*Optional:* During install, open a second terminal, SSH in then switch to the phantom user.   Tail -f the file /opt/phantom/var/log/phantom/phantom_install_log to see the installation progress.
