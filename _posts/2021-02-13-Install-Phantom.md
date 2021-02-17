@@ -92,10 +92,10 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 12. Edit the file /etc/security/limits.d/25-phantom-limits.conf to add these settings:
 
-    > phantom          hard    nofile          64000  
-    > phantom          soft    nofile          64000  
-    > phantom          hard    nproc           64000  
-    > phantom          soft    nproc           64000             
+    `phantom          hard    nofile          64000`  
+    `phantom          soft    nofile          64000`  
+    `phantom          hard    nproc           64000`  
+    `phantom          soft    nproc           64000`             
 
 13. Apply the new security settings.
 
@@ -107,25 +107,25 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     `chmod 775 /opt/phantom`  
 
 
-Following steps must be done as the phantom user
-    - Confirm that you have plenty of hours remaining in your Cisco VPN session.
-    - If in doubt, switch to mercury to not get interrupted in the middle of the install
+15. Following steps must be done as the phantom user
+    * Confirm that you have plenty of hours remaining in your Cisco VPN session.
+    * If in doubt, switch to mercury to not get interrupted in the middle of the install
 
-15. Exit the root user
+16. Exit the root user
 
     `exit`
 
-16. Use sudo to switch to the phantom user
+17. Use sudo to switch to the phantom user
 
     `sudo su - phantom`  
 
-17. Copy or upload then uncompress phantom-4.9.34514-1.tgz to /opt/phantom
+18. Copy or upload then uncompress phantom-4.9.34514-1.tgz to /opt/phantom
 
     `cd /opt/phantom`
     `tar xvzf phantom-x.x.yyyyy.tgz`
     (*NOTE:*  tar will overwrite permission of “.” to be 0750.  Leave it as is.  No change)
 
-18. Install
+19. Install
 
     run whoami to be sure you are using the “phantom” user
     `whoami`
