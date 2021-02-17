@@ -15,7 +15,6 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/InstallUnprivileged
 Version 4.10.1 of the Install guide was updated and feels more streamlined.  Just follow those steps accordingly and use the following notes as reference.  
 
 1- Enable proxy
-
     > echo "export http_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
     > echo "export https_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
     > echo "export HTTP_PROXY=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
@@ -26,24 +25,20 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
 
 2- Disable SELinux
-
     Edit `/etc/selinux/config` to disable SELinux. Change the SELINUX= entry to:
     `SELINUX=disabled`
 
 3- Yum update then reboot
-
     `yum clean all`
     `yum update`
     `shutdown -r now`
 
 4- Install dependencies
-
     `yum install -y libevent libicu c-ares bind-utils java-1.8.0-openjdk-headless mailcap fontconfig ntpdate perl rsync xmlsec1 xmlsec1-openssl libxslt ntp zip net-tools policycoreutils-python libxml2 libcurl gnutls`
 
 5- DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)
 
 6- Set firewall rule to allow Phantom ports
-
     Standalone:
     `firewall-cmd —add-port=22/tcp —permanent`
     `firewall-cmd —add-port=80/tcp —permanent`
