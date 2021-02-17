@@ -27,7 +27,7 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
 
 2- Disable SELinux
-    Edit /etc/selinux/config to disable SELinux. Change the SELINUX= entry to:
+    Edit `/etc/selinux/config` to disable SELinux. Change the SELINUX= entry to:
     `SELINUX=disabled`
 
 3- Yum update then reboot
@@ -41,33 +41,35 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 5- DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)
 
 6- Set firewall rule to allow Phantom ports
-Standalone:
-(already opened) firewall-cmd —add-port=22/tcp —permanent
-firewall-cmd —add-port=80/tcp —permanent
-firewall-cmd —add-port=443/tcp —permanent
-(Open only for Active Node)  firewall-cmd —add-port=8000/tcp —permanent
-	- Skip TCP/8000 on standby server
 
-PostgreSQL:
-firewall-cmd —add-port=5432/tcp —permanent
-firewall-cmd —add-port=6432/tcp —permanent
+    Standalone:
+    `firewall-cmd —add-port=22/tcp —permanent`
+    `firewall-cmd —add-port=80/tcp —permanent`
+    `firewall-cmd —add-port=443/tcp —permanent`
+    `firewall-cmd —add-port=8000/tcp —permanent`
 
-Embedded Splunk Enterprise:
-firewall-cmd —add-port=5121/tcp —permanent
-firewall-cmd —add-port=5122/tcp —permanent
+    PostgreSQL:
+    `firewall-cmd —add-port=5432/tcp —permanent`
+    `firewall-cmd —add-port=6432/tcp —permanent`
 
-Cluster Node
-firewall-cmd —add-port=4369/tcp —permanent
-firewall-cmd —add-port=5671/tcp —permanent
-firewall-cmd —add-port=8300/tcp —permanent
-firewall-cmd —add-port=8301/tcp —permanent
-firewall-cmd —add-port=8302/tcp —permanent
-firewall-cmd —add-port=8888/tcp —permanent
-firewall-cmd —add-port=15672/tcp —permanent
-firewall-cmd —add-port=25672/tcp —permanent
-firewall-cmd —add-port=27100-27200/tcp —permanent
-firewall-cmd —reload
-firewall-cmd —list-all
+    Embedded Splunk Enterprise:
+    `firewall-cmd —add-port=5121/tcp —permanent`
+    `firewall-cmd —add-port=5122/tcp —permanent`
+
+    Cluster Node
+    `firewall-cmd —add-port=4369/tcp —permanent`
+    `firewall-cmd —add-port=5671/tcp —permanent`
+    `firewall-cmd —add-port=8300/tcp —permanent`
+    `firewall-cmd —add-port=8301/tcp —permanent`
+    `firewall-cmd —add-port=8302/tcp —permanent`
+    `firewall-cmd —add-port=8888/tcp —permanent`
+    `firewall-cmd —add-port=15672/tcp —permanent`
+    `firewall-cmd —add-port=25672/tcp —permanent`
+    `firewall-cmd —add-port=27100-27200/tcp —permanent`
+    
+    Save and reload FW Policy
+    `firewall-cmd —reload`
+    `firewall-cmd —list-all`
 
 7- NTP (already enabled)
 
