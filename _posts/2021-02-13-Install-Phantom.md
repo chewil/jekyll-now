@@ -108,8 +108,9 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 
 15. Following steps must be done as the phantom user
-    * Confirm that you have plenty of hours remaining in your Cisco VPN session.
-    * If in doubt, switch to mercury to not get interrupted in the middle of the install
+    - Install can take a long time.  
+    - If you are on a VPN connection, confirm that you have plenty of hours remaining VPN session.
+    - If in doubt, reestablish VPN, or switch to another connection method to avoid getting disconnected in the middle of the install
 
 16. Exit the root user
 
