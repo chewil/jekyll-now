@@ -28,7 +28,8 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     Edit `/etc/selinux/config` to disable SELinux. Change the SELINUX= entry to:  
     > SELINUX=disabled
 
-3. Yum update then reboot  
+3. Yum update then reboot
+
     > yum clean all  
     > yum update  
     > shutdown -r now  
