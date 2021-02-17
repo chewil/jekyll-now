@@ -14,7 +14,7 @@ https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/InstallUnprivileged
 
 Version 4.10.1 of the Install guide was updated and feels more streamlined.  Just follow those steps accordingly and use the following notes as reference.  
 
-1- Enable proxy
+1. Enable proxy
     > echo "export http_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
     > echo "export https_proxy=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
     > echo "export HTTP_PROXY=http://proxy.example.com:8080/" &gt;&gt; /etc/profile  
@@ -24,21 +24,21 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     > echo “export http_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
     > echo “export https_proxy=http://proxy.example.com:8080/“ &gt;&gt; /etc/profile.d/http_proxy.csh
 
-2- Disable SELinux
+2. Disable SELinux
     Edit `/etc/selinux/config` to disable SELinux. Change the SELINUX= entry to:
     `SELINUX=disabled`
 
-3- Yum update then reboot
+3. Yum update then reboot
     `yum clean all`
     `yum update`
     `shutdown -r now`
 
-4- Install dependencies
+4. Install dependencies
     `yum install -y libevent libicu c-ares bind-utils java-1.8.0-openjdk-headless mailcap fontconfig ntpdate perl rsync xmlsec1 xmlsec1-openssl libxslt ntp zip net-tools policycoreutils-python libxml2 libcurl gnutls`
 
-5- DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)
+5. DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)
 
-6- Set firewall rule to allow Phantom ports
+6. Set firewall rule to allow Phantom ports
     Standalone:
     `firewall-cmd —add-port=22/tcp —permanent`
     `firewall-cmd —add-port=80/tcp —permanent`
@@ -68,39 +68,39 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     `firewall-cmd —reload`
     `firewall-cmd —list-all`
 
-7- NTP (already enabled)
+7. NTP (already enabled)
 
-8- Create a file called /etc/sysctl.d/50-phantom.conf
+8. Create a file called /etc/sysctl.d/50-phantom.conf
 
     See step 11 of the unprivileged install doc to paste in the necessary configuration
 
-9- Apply the new kernel settings.
+9. Apply the new kernel settings.
 
     `sysctl —system`
 
-10- Create the user account that will be used to run Splunk Phantom.
+10. Create the user account that will be used to run Splunk Phantom.
 
     `adduser -c “Phantom User” phantom`
     `passwd phantom`
     Generate a random password, or use a password manager
 
-11- Create a file called /etc/security/limits.d/25-phantom-limits.conf
+11. Create a file called /etc/security/limits.d/25-phantom-limits.conf
 
     This file sets resource limits for the user that will run Splunk Phantom.
     `touch /etc/security/limits.d/25-phantom-limits.conf`
 
-12- Edit the file /etc/security/limits.d/25-phantom-limits.conf to add these settings:
+12. Edit the file /etc/security/limits.d/25-phantom-limits.conf to add these settings:
 
     > phantom          hard    nofile          64000
     > phantom          soft    nofile          64000
     > phantom          hard    nproc           64000
     > phantom          soft    nproc           64000           
 
-13- Apply the new security settings.
+13. Apply the new security settings.
 
     `sysctl —system`
 
-14- Set /opt/phantom permission
+14. Set /opt/phantom permission
 
     `chown phantom:phantom /opt/phantom`
     `chmod 775 /opt/phantom`
@@ -110,21 +110,21 @@ Following steps must be done as the phantom user
     - Confirm that you have plenty of hours remaining in your Cisco VPN session.
     - If in doubt, switch to mercury to not get interrupted in the middle of the install
 
-15- Exit the root user
+15. Exit the root user
 
     `exit`
 
-16- Use sudo to switch to the phantom user
+16. Use sudo to switch to the phantom user
 
     `sudo su - phantom`
 
-17- Copy or upload then uncompress phantom-4.9.34514-1.tgz to /opt/phantom
+17. Copy or upload then uncompress phantom-4.9.34514-1.tgz to /opt/phantom
 
     `cd /opt/phantom`
     `tar xvzf phantom-x.x.yyyyy.tgz`
     (*NOTE:*  tar will overwrite permission of “.” to be 0750.  Leave it as is.  No change)
 
-18- Install
+18. Install
 
     run whoami to be sure you are using the “phantom” user
     `whoami`
