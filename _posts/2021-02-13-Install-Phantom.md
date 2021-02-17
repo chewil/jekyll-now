@@ -39,17 +39,17 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 5. DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)  
 
 6. Set firewall rule to allow Phantom ports  
-    Standalone:  
+    Standalone  
     > firewall-cmd —add-port=22/tcp —permanent
     > firewall-cmd —add-port=80/tcp —permanent
     > firewall-cmd —add-port=443/tcp —permanent
     > firewall-cmd —add-port=8000/tcp —permanent
 
-    PostgreSQL:  
+    PostgreSQL  
 	> firewall-cmd —add-port=5432/tcp —permanent
     > firewall-cmd —add-port=6432/tcp —permanent
 
-    Embedded Splunk Enterprise:  
+    Embedded Splunk Enterprise  
     > firewall-cmd —add-port=5121/tcp —permanent
     > firewall-cmd —add-port=5122/tcp —permanent
 
