@@ -71,31 +71,31 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 7. NTP (already enabled)
 
-8. Create a file called /etc/sysctl.d/50-phantom.conf
+8. Create a file called /etc/sysctl.d/50-phantom.conf  
 
-    See step 11 of the unprivileged install doc to paste in the necessary configuration
+    See step 11 of the unprivileged install doc to paste in the necessary configuration  
 
-9. Apply the new kernel settings.
+9. Apply the new kernel settings  
 
-    > sysctl —system
+    > sysctl —system  
 
 10. Create the user account that will be used to run Splunk Phantom.
 
-    > adduser -c “Phantom User” phantom
-    > passwd phantom
-    Generate a random password, or use a password manager
+    > adduser -c “Phantom User” phantom  
+    > passwd phantom  
+    Generate a random password, or use a password manager  
 
 11. Create a file called /etc/security/limits.d/25-phantom-limits.conf
 
-    This file sets resource limits for the user that will run Splunk Phantom.
-    `touch /etc/security/limits.d/25-phantom-limits.conf`
+    This file sets resource limits for the user that will run Splunk Phantom.  
+    `touch /etc/security/limits.d/25-phantom-limits.conf`  
 
 12. Edit the file /etc/security/limits.d/25-phantom-limits.conf to add these settings:
 
-    > phantom          hard    nofile          64000
-    > phantom          soft    nofile          64000
-    > phantom          hard    nproc           64000
-    > phantom          soft    nproc           64000           
+    > phantom          hard    nofile          64000  
+    > phantom          soft    nofile          64000  
+    > phantom          hard    nproc           64000  
+    > phantom          soft    nproc           64000             
 
 13. Apply the new security settings.
 
@@ -103,8 +103,8 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 14. Set /opt/phantom permission
 
-    `chown phantom:phantom /opt/phantom`
-    `chmod 775 /opt/phantom`
+    `chown phantom:phantom /opt/phantom`  
+    `chmod 775 /opt/phantom`  
 
 
 Following steps must be done as the phantom user
@@ -117,7 +117,7 @@ Following steps must be done as the phantom user
 
 16. Use sudo to switch to the phantom user
 
-    `sudo su - phantom`
+    `sudo su - phantom`  
 
 17. Copy or upload then uncompress phantom-4.9.34514-1.tgz to /opt/phantom
 
