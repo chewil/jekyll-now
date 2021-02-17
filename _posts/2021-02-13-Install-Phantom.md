@@ -26,47 +26,47 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 2. Disable SELinux
     Edit `/etc/selinux/config` to disable SELinux. Change the SELINUX= entry to:
-    `SELINUX=disabled`
+    > SELINUX=disabled
 
 3. Yum update then reboot
-    `yum clean all`
-    `yum update`
-    `shutdown -r now`
+    > yum clean all
+    > yum update
+    > shutdown -r now
 
 4. Install dependencies
-    `yum install -y libevent libicu c-ares bind-utils java-1.8.0-openjdk-headless mailcap fontconfig ntpdate perl rsync xmlsec1 xmlsec1-openssl libxslt ntp zip net-tools policycoreutils-python libxml2 libcurl gnutls`
+    > yum install -y libevent libicu c-ares bind-utils java-1.8.0-openjdk-headless mailcap fontconfig ntpdate perl rsync xmlsec1 xmlsec1-openssl libxslt ntp zip net-tools policycoreutils-python libxml2 libcurl gnutls
 
 5. DO NOT install GlusterFS (Skip step 6 in the document for installing GlusterFS)
 
 6. Set firewall rule to allow Phantom ports
     Standalone:
-    `firewall-cmd —add-port=22/tcp —permanent`
-    `firewall-cmd —add-port=80/tcp —permanent`
-    `firewall-cmd —add-port=443/tcp —permanent`
-    `firewall-cmd —add-port=8000/tcp —permanent`
+    > firewall-cmd —add-port=22/tcp —permanent
+    > firewall-cmd —add-port=80/tcp —permanent
+    > firewall-cmd —add-port=443/tcp —permanent
+    > firewall-cmd —add-port=8000/tcp —permanent
 
     PostgreSQL:
-    `firewall-cmd —add-port=5432/tcp —permanent`
-    `firewall-cmd —add-port=6432/tcp —permanent`
+		> firewall-cmd —add-port=5432/tcp —permanent
+    > firewall-cmd —add-port=6432/tcp —permanent
 
     Embedded Splunk Enterprise:
-    `firewall-cmd —add-port=5121/tcp —permanent`
-    `firewall-cmd —add-port=5122/tcp —permanent`
+    > firewall-cmd —add-port=5121/tcp —permanent
+    > firewall-cmd —add-port=5122/tcp —permanent
 
     Cluster Node
-    `firewall-cmd —add-port=4369/tcp —permanent`
-    `firewall-cmd —add-port=5671/tcp —permanent`
-    `firewall-cmd —add-port=8300/tcp —permanent`
-    `firewall-cmd —add-port=8301/tcp —permanent`
-    `firewall-cmd —add-port=8302/tcp —permanent`
-    `firewall-cmd —add-port=8888/tcp —permanent`
-    `firewall-cmd —add-port=15672/tcp —permanent`
-    `firewall-cmd —add-port=25672/tcp —permanent`
-    `firewall-cmd —add-port=27100-27200/tcp —permanent`
+    > firewall-cmd —add-port=4369/tcp —permanent
+    > firewall-cmd —add-port=5671/tcp —permanent
+    > firewall-cmd —add-port=8300/tcp —permanent
+    > firewall-cmd —add-port=8301/tcp —permanent
+    > firewall-cmd —add-port=8302/tcp —permanent
+    > firewall-cmd —add-port=8888/tcp —permanent
+    > firewall-cmd —add-port=15672/tcp —permanent
+    > firewall-cmd —add-port=25672/tcp —permanent
+    > firewall-cmd —add-port=27100-27200/tcp —permanent
     
     Save and reload FW Policy
-    `firewall-cmd —reload`
-    `firewall-cmd —list-all`
+    > firewall-cmd —reload
+    > firewall-cmd —list-all
 
 7. NTP (already enabled)
 
@@ -76,12 +76,12 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 9. Apply the new kernel settings.
 
-    `sysctl —system`
+    > sysctl —system
 
 10. Create the user account that will be used to run Splunk Phantom.
 
-    `adduser -c “Phantom User” phantom`
-    `passwd phantom`
+    > adduser -c “Phantom User” phantom
+    > passwd phantom
     Generate a random password, or use a password manager
 
 11. Create a file called /etc/security/limits.d/25-phantom-limits.conf
