@@ -76,7 +76,7 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
 9. Apply the new kernel settings  
 
-    `sysctl —system`  
+    `sysctl -system`  
 
 10. Create the user account that will be used to run Splunk Phantom.
 
