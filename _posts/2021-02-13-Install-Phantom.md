@@ -8,7 +8,7 @@ tags: Splunk Phantom admin
 ---
 
 ## WIP
-*Personal notes on upgrading an **unprivileged** Splunk Phantom instance using the tarball (.tgz) installer method.  
+*Personal notes on installing an **unprivileged** Splunk Phantom instance using the tarball (.tgz) file.  
 
 https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/InstallUnprivileged  
 
@@ -70,7 +70,7 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     `firewall-cmd —reload`  
     `firewall-cmd —list-all`. 
 
-7. NTP (already enabled)
+7. NTP (Enable if it’s not already)
 
 8. Create a file called /etc/sysctl.d/50-phantom.conf.  See step 11 of the unprivileged install doc to paste in the necessary configuration  
 
@@ -101,21 +101,20 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 14. Set /opt/phantom permission
 
     `chown phantom:phantom /opt/phantom`  
-    `chmod 775 /opt/phantom`  
+    `chmod 775 /opt/phantom`
 
-
-15. Following steps must be done as the phantom user
-    - Install can take a long time.  
-    - If you are on a VPN connection, confirm that you have plenty of hours remaining VPN session.  
-    - If in doubt, reestablish VPN, or switch to another connection method to avoid getting disconnected in the middle of the install.
-
-16. Exit the root user
+15. Exit the root user
 
     `exit`
 
-17. Use sudo to switch to the phantom user
+16. Use sudo to switch to the phantom user
 
-    `sudo su - phantom`  
+    `sudo su - phantom`
+
+17. Following steps must be done as the phantom user
+    - Install can take a long time.  
+    - If you are on a VPN connection, confirm that you have plenty of hours remaining VPN session.  
+    - If in doubt, reestablish VPN, or switch to another connection method to avoid getting disconnected in the middle of the install.
 
 18. Copy or upload then uncompress phantom-4.9.34514-1.tgz to `/opt/phantom` (**NOTE:**  tar will overwrite permission of “.” to 0750.  Leave it as is.  No change)
 
