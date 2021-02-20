@@ -116,7 +116,7 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     - If you are on a VPN connection, confirm that you have plenty of hours remaining VPN session.  
     - If in doubt, reestablish VPN, or switch to another connection method to avoid getting disconnected in the middle of the install.
 
-18. Copy or upload then uncompress phantom-4.9.34514-1.tgz to `/opt/phantom` (**NOTE:**  tar will overwrite permission of “.” to 0750.  Leave it as is.  No change)
+18. Copy or upload then uncompress phantom-x.x.yyyyy-1.tgz to `/opt/phantom` (**NOTE:**  tar will overwrite permission of “.” to 0750.  Leave it as is.  No change)
 
     `cd /opt/phantom`  
     `tar xvzf phantom-x.x.yyyyy.tgz`  
