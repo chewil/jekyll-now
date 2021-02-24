@@ -8,8 +8,9 @@ tags: template test
 ---
 *Markdown cheatsheet  
 Links:
-[Markdown Basics](https://markdown-guide.readthedocs.io/en/latest/basics.html)
-  
+* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+* [Markdown Basics](https://markdown-guide.readthedocs.io/en/latest/basics.html)
+
 ## Header
     ---
     layout: post
