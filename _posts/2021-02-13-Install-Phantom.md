@@ -6,8 +6,6 @@ date: 2021-02-13 23:49:00
 category: Phantom
 tags: Splunk Phantom admin
 ---
-
-## WIP
 *Personal notes on installing an **unprivileged** Splunk Phantom instance using the tarball (.tgz) file.  
 
 https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/InstallUnprivileged  
@@ -65,10 +63,10 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
     `firewall-cmd —add-port=15672/tcp —permanent`  
     `firewall-cmd —add-port=25672/tcp —permanent`  
     `firewall-cmd —add-port=27100-27200/tcp —permanent`  
-    
+
     Save and reload FW Policy  
     `firewall-cmd —reload`  
-    `firewall-cmd —list-all`. 
+    `firewall-cmd —list-all`.
 
 7. NTP (Enable if it’s not already)
 
@@ -125,10 +123,10 @@ Version 4.10.1 of the Install guide was updated and feels more streamlined.  Jus
 
     run whoami to be sure you are using the “phantom” user  
     `whoami`  
-  
+
     Install and configure Phantom with the WebUI on port 8000  
     `./phantom_tar_install.sh install —https-port=8000`
 
 For more installation command line options, see phantom_tar_install.sh options.  
-  
+
 **Optional:** During install, open a second terminal, SSH in then switch to the phantom user. Then `tail -f /opt/phantom/var/log/phantom/phantom_install_log` to see the installation progress.
