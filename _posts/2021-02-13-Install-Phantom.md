@@ -8,6 +8,8 @@ tags: Splunk Phantom admin
 ---
 *Personal notes on installing an **unprivileged** Splunk Phantom instance using the tarball (.tgz) file.  
 
+
+
 https://docs.splunk.com/Documentation/Phantom/4.10.1/Install/InstallUnprivileged  
 
 Version 4.10.1 of the Install guide was updated and feels more streamlined.  Just follow those steps accordingly and use the following notes as reference.  
